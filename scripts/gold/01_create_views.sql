@@ -42,7 +42,7 @@ SELECT sd.sls_ord_num AS order_number,
     sd.sls_order_dt AS order_date,
     sd.sls_ship_dt AS shipping_date,
     sd.sls_due_dt AS due_date,
-    sd.sls_sales AS sales,
+    sd.sls_sales AS sales_amount,
     sd.sls_quantity AS quantity,
     sd.sls_price AS price
 FROM silver.crm_sales_details sd
