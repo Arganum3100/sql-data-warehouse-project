@@ -24,13 +24,11 @@ Objects:
 ===============================================================================
 */
 
--- ============================================================================
 -- Customer Dimension
--- Integrates CRM customer data with ERP demographic and location information.
--- ============================================================================
-
+-- Integrates CRM customer information with ERP demographic and location information.
 CREATE OR REPLACE VIEW gold.dim_customers AS
 SELECT
+
     -- Generate a surrogate key for analytical relationships
     ROW_NUMBER() OVER (ORDER BY ci.cst_id) AS customer_key,
 
@@ -49,7 +47,6 @@ SELECT
     ci.cst_marital_status AS marital_status,
     ca.bdate AS birth_date,
     la.cntry AS country
-
 FROM silver.crm_cust_info ci
 LEFT JOIN silver.erp_cust_az12 ca
     ON ci.cst_key = ca.cid
@@ -57,11 +54,8 @@ LEFT JOIN silver.erp_loc_a101 la
     ON ci.cst_key = la.cid;
 
 
--- ============================================================================
 -- Product Dimension
--- Combines product master data with ERP category information.
--- ============================================================================
-
+-- Combines product information with ERP category information.
 CREATE OR REPLACE VIEW gold.dim_products AS
 SELECT
 
@@ -82,7 +76,6 @@ SELECT
     pi.prd_cost AS product_cost,
     pi.prd_line AS product_line,
     pi.prd_start_dt AS start_date
-
 FROM silver.crm_prd_info pi
 LEFT JOIN silver.erp_px_cat_g1v2 pc
     ON pi.prd_cat = pc.id
@@ -92,11 +85,8 @@ LEFT JOIN silver.erp_px_cat_g1v2 pc
 WHERE pi.prd_end_dt IS NULL;
 
 
--- ============================================================================
 -- Sales Fact
--- Connects sales transactions with customer and product dimensions.
--- ============================================================================
-
+-- Connects sales details with customer and product dimensions.
 CREATE OR REPLACE VIEW gold.fact_sales AS
 SELECT
 
@@ -109,17 +99,12 @@ SELECT
     sd.sls_order_dt AS order_date,
     sd.sls_ship_dt AS shipping_date,
     sd.sls_due_dt AS due_date,
-
     sd.sls_sales AS sales,
     sd.sls_quantity AS quantity,
     sd.sls_price AS price
 
 FROM silver.crm_sales_details sd
-
--- Join customer dimension
 LEFT JOIN gold.dim_customers cu
     ON sd.sls_cust_id = cu.customer_id
-
--- Join product dimension
 LEFT JOIN gold.dim_products pr
     ON pr.product_number = sd.sls_prd_key;
