@@ -37,8 +37,7 @@ SELECT
     ci.cst_firstname AS first_name,
     ci.cst_lastname AS last_name,
 
-    -- Business Rule:
-    -- Prioritize CRM gender when available; otherwise use ERP gender.
+    -- Business Rule: Prioritize CRM gender when available; otherwise use ERP gender.
     CASE
         WHEN ci.cst_gndr != 'n/a' THEN ci.cst_gndr
         ELSE COALESCE(ca.gen, 'n/a')
@@ -67,8 +66,7 @@ SELECT
     pi.prd_key AS product_number,
     pi.prd_nm AS product_name,
 
-    -- Data Integration:
-    -- Retrieve descriptive product category attributes from ERP.
+    -- Data Integration: Retrieve descriptive product category attributes from ERP.
     pc.cat AS category,
     pc.subcat AS subcategory,
     pc.maintenance,
@@ -80,8 +78,7 @@ FROM silver.crm_prd_info pi
 LEFT JOIN silver.erp_px_cat_g1v2 pc
     ON pi.prd_cat = pc.id
 
--- Business Rule:
--- Include only currently active products.
+-- Business Rule: Include only currently active products.
 WHERE pi.prd_end_dt IS NULL;
 
 
