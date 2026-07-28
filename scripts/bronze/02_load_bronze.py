@@ -8,7 +8,8 @@ from sqlalchemy import create_engine
 from sqlalchemy.exc import SQLAlchemyError
 
 #Loading environment
-load_dotenv()
+env_dir = Path(__file__).resolve().parent.parent.parent
+load_dotenv(root_dir / ".env")
 DB_HOST=os.getenv("DB_HOST")
 DB_PORT=os.getenv("DB_PORT")
 DB_NAME=os.getenv("DB_NAME")
