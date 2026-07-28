@@ -8,7 +8,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.exc import SQLAlchemyError
 
 #Loading environment
-env_dir = Path(__file__).resolve().parent.parent.parent
+root_dir = Path(__file__).resolve().parent.parent.parent
 load_dotenv(root_dir / ".env")
 DB_HOST=os.getenv("DB_HOST")
 DB_PORT=os.getenv("DB_PORT")
@@ -33,7 +33,6 @@ if missing_fields:
 engine = create_engine(f"postgresql+psycopg2://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}")
 
 #Directories
-root_dir = Path(__file__).resolve().parent.parent.parent
 crm_dir = root_dir / "datasets" / "source_crm" 
 erp_dir = root_dir / "datasets" / "source_erp"
 
