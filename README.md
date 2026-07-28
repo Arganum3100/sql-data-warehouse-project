@@ -1,12 +1,19 @@
 # Data Warehouse and Analytics Project
 
-Welcome to my **Data Warehouse and Analytics Project** repository!
+**Data Warehouse and Analytics Project** 
 This project demonstrates comprehensive data warehousing and analytics solution, from building a data warehouse to generating actionable insights. Designed as a portfolio project which highlights industry best practices in data engineering and analytics.
 
 ---
 
 ## Requirements
-- PostgreSQL 18
+- PostgreSQL 18+
+- Python 3.12+
+- pgAdmin 4
+- Required Python packages:
+  - pandas
+  - SQLAlchemy
+  - psycopg2-binary
+  - python-dotenv
 
 ## Setup
 1. Create a database named `data_warehouse`.
