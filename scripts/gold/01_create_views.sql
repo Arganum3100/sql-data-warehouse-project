@@ -67,9 +67,9 @@ SELECT
     pi.prd_nm AS product_name,
 
     -- Data Integration: Retrieve descriptive product category attributes from ERP.
-    pc.cat AS category,
-    pc.subcat AS subcategory,
-    pc.maintenance,
+    CAST(COALESCE(pc.cat, 'n/a') AS VARCHAR(50)) AS category,
+    CAST(COALESCE(pc.subcat, 'n/a') AS VARCHAR(50)) AS subcategory,
+    CAST(COALESCE(pc.maintenance, 'n/a') AS VARCHAR(50)) AS maintenance,
 
     pi.prd_cost AS product_cost,
     pi.prd_line AS product_line,
