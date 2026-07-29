@@ -19,8 +19,6 @@ This project demonstrates comprehensive data warehousing and analytics solution,
 ```sql
 CREATE DATABASE data_warehouse;
 ```
-
 2. Connect to `data_warehouse`.
-
 3. Run all SQL scripts inside the `scripts/` folder in numerical order.
 4. 
