@@ -275,19 +275,19 @@ Sales-Data-Warehouse/
 
 ### Executive Summary
 
-![Executive Summary]
+![Executive Summary](powerbi/screenshots/executive_summary.png)
 
 ---
 
 ### Customer Analysis
 
-![Customer Analysis]
+![Customer Analysis](powerbi/screenshots/customer_analysis.png)
 
 ---
 
 ### Product Analysis
 
-![Product Analysis]
+![Product Analysis](powerbi/screenshots/product_analysis.png)
 
 ---
 
