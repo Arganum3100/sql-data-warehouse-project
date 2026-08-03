@@ -60,7 +60,7 @@ The project focuses on building a scalable, maintainable ETL pipeline while ensu
 
 ## ETL Pipeline
 
-docs/etl_pipeline.png
+![ETL Pipeline](docs/etl_pipeline.png)
 
 ---
 
